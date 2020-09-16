@@ -1,0 +1,12 @@
+image: docker:19.03.0
+services:
+  - docker:19.03.0-dind
+stages:
+  - build-image
+
+build-image:
+  stage: build-image
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE/$IMAGE_NAME .
+    - docker push $CI_REGISTRY_IMAGE/$IMAGE_NAME
