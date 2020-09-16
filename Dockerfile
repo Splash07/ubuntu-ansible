@@ -1,4 +1,4 @@
-FROM ubuntu:20.10
+FROM ubuntu:18.04
 
 RUN apt-get -qy update
 RUN apt install -qy python software-properties-common git
